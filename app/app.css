@@ -1,0 +1,94 @@
+﻿/*
+In NativeScript, the app.css file is where you place CSS rules that
+you would like to apply to your entire application. Check out
+http://docs.nativescript.org/ui/styling for a full list of the CSS
+selectors and properties you can use to style UI components.
+
+/*
+In many cases you may want to use the NativeScript core theme instead
+of writing your own CSS rules. For a full list of class names in the theme
+refer to http://docs.nativescript.org/ui/theme. 
+The imported CSS rules must precede all other types of rules.
+*/
+@import '~@nativescript/theme/css/core.css';
+/* @import '~@nativescript/theme/css/default.css'; */
+@import './font-awesome.css';
+
+button, label, textField, listView, stackLayout, flexboxLayout, gridLayout, listPicker, page {
+    padding: 0;
+    margin: 0;
+    font-size: 17;
+    color:rgba(0, 67, 99, 1)
+}
+
+textField {
+    placeholder-color: rgb(160,160,160);
+    border-color: rgba(0, 67, 99, 0.5);
+}
+
+textField:focus {
+    border-color: rgba(0, 67, 99, 1)
+}
+
+.-primary {
+    background-color: #004363;
+    color: white;
+}
+
+.-outline-btn {
+    border-color: #004363;
+    border: 0.5;
+    background-color: white;
+    color:rgba(0, 67, 99, 1)
+}
+
+.font-title {
+    font-size: 20;
+}
+
+.font-normal {
+    font-size: 15;
+}
+
+.pad-top-20 {
+    padding-top: 20
+}
+.pad-top-10 {
+    padding-top: 10;
+}
+
+.pad-0 {
+    padding: 0;
+}
+.justify-end {
+    justify-content: flex-end;
+}
+
+.justify-even {
+    justify-content: space-around;
+}
+
+.border-bottom-title {
+    border-color: rgb(160,160,160);
+    border-bottom: 1;
+}
+
+.justify-start {
+    justify-content: flex-start;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+
+.body-grid {
+    padding: 15 20 0 20;   
+}
+
+.left-col {
+    margin-right: 8;
+}
+.right-col {
+    margin-left: 8;
+}
