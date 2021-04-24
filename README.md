@@ -1,31 +1,31 @@
 # Info
-## Package manager
+### Package manager
 yarn
 
-## Native framework
+### Native framework
 
 Svelte Native
 
-## Language
+### Language
 
 TypeScript
 
 <br/>
 
 # Test and deploy
-## No build
+### No build
 Scan QR code and open link in NativeScript Preview app
 ```bash
 ns preview
 ```
 
-## Deploy app for testing
+### Deploy app for testing
 USB or WiFi debugging
 ```bash
 ns run [platform] # platform: [android, ios]
 ```
 
-## Build app
+### Build app
 ```bash
 ns build [platform] # platform: [android, ios]
 ```
