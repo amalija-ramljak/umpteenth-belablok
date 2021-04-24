@@ -9,14 +9,15 @@
   "license": "Apache-2.0",
   "repository": "https://github.com/halfnelson/svelte-native-template",
   "dependencies": {
-    "@nativescript/core": "^7.0.13",
     "@nativescript/theme": "^2.3.4",
     "@nativescript/webpack": "3.0.0",
     "@nstudio/nativescript-checkbox": "^2.0.4",
     "svelte-native": "^0.9.5"
   },
   "devDependencies": {
+    "@nativescript/core": "^7.0.13",
     "@nativescript/android": "7.0.0",
+    "@nativescript/ios": "^8.0.0",
     "svelte": "~3.24.1",
     "svelte-loader-hot": "~0.3.1",
     "svelte-native-preprocessor": "^0.2.0",
