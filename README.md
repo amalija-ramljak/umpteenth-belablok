@@ -20,7 +20,7 @@ ns preview
 ```
 
 ### Deploy app for testing
-USB or WiFi debugging
+USB or WiFi debugging (https://developer.android.com/studio/command-line/adb)
 ```bash
 ns run [platform] # platform: [android, ios]
 ```
