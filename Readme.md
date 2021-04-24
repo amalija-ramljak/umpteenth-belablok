@@ -1,9 +1,31 @@
-Once installed use the `ns preview`, `ns build` or `ns run` commands as for a normal NativeScript application.
+# Info
+## Package manager
+yarn
 
-Example: install & run application on your device:
+## Native framework
 
+Svelte Native
+
+## Language
+
+TypeScript
+
+<br/>
+
+# Test and deploy
+## No build
+Scan QR code and open link in NativeScript Preview app
 ```bash
-ns run android
-# or
-ns run ios
+ns preview
+```
+
+## Deploy app for testing
+USB or WiFi debugging
+```bash
+ns run [platform] # platform: [android, ios]
+```
+
+## Build app
+```bash
+ns build [platform] # platform: [android, ios]
 ```
