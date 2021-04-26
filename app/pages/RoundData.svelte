@@ -1,11 +1,15 @@
 <script>
-  import { navigate } from 'svelte-native'
-  import ActionBar from '../components/ActionBar.svelte'
+  import * as constants from '../constants/roundData.const';
+  import { isOpenRoundEntry } from '../stores/roundData.store';
 
-  import Game from './Game.svelte'
+  export let newId = 0
+  export let onAddRound = () => {}
 
-  export let game = []
-  export let players = []
+  let isOpen;
+
+  const unsubscribe = isOpenRoundEntry.subscribe(value => {
+    isOpen = value;
+  });
 
   const cleanTotal = 162
   const stiglja = 90
@@ -88,7 +92,6 @@
     ) {
       return
     }
-    
     if(roundMI === '') {
       roundVI = Number(roundVI)
       roundMI = cleanTotal - roundVI
@@ -100,14 +103,27 @@
 
     roundMIZvanja = Number(roundMIZvanja)
     roundVIZvanja = Number(roundVIZvanja)
+
     
     let totalGame = cleanTotal + (roundMIZvanja || 0) + (roundVIZvanja || 0) + (bela ? 20 : 0)
     let absoluteWin = totalGame + stiglja
 
     let newRound = {
-      idx: game.length,
+      id: newId,
       mi: roundMI + (bela === 'mi' ? 20 : 0) + (roundMIZvanja || 0),
       vi: roundVI + (bela === 'vi' ? 20 : 0) + (roundVIZvanja || 0),
+      raw: {
+        mi: {
+          bodovi: roundMI,
+          zvanja: roundMIZvanja
+        },
+        vi: {
+          bodovi: roundVI,
+          zvanja: roundVIZvanja
+        },
+        bela: bela,
+        callers: callers,
+      }
     }
 
 
@@ -119,18 +135,13 @@
       newRound.vi = 0
     }
 
+
     if(!newRound.mi) newRound.mi = "-"
     if(!newRound.vi) newRound.vi = "-"
 
+    onAddRound(newRound)
+    isOpenRoundEntry.set(false)
     emptyRound()
-    navigate({
-      page: Game,
-      props: {
-        shufflerIdx: (game.length + 1) % 4,
-        game: [...game, newRound],
-        players: players,
-      },
-    })
   }
 
   function emptyRound() {
@@ -138,22 +149,29 @@
     roundMIZvanja = ''
     roundVI = ''
     roundVIZvanja = ''
+    bela = ''
   }
 
   function cancelEntry() {
     emptyRound()
-    navigate({
-      page: Game,
-      props: {
-        shufflerIdx: game.length % 4,
-        game: game,
-        players: players,
-      },
-    })
+    isOpenRoundEntry.set(false)
   }
 </script>
 
 <style>
+  .overlay {
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .body-grid {
+    height: 90%;
+    width: 90%;
+    border-radius: 5;
+    background-color: #808080;
+  }
   .deleteButton {
     height: 40;
     width: 50;
@@ -177,11 +195,9 @@
   }
 </style>
 
-<page>
-  <ActionBar />
+{#if isOpen}
+<flexboxLayout class="overlay" width="100%" height="100%">
   <gridLayout class="body-grid" rows="125,*,70">
-    <!-- <CheckBox checked="false" text="nesto" />
-            <CheckBox text="CheckBox Label" checked="false" /> -->
     <flexboxLayout class="justify-even" row="0">
       <flexboxLayout class="justify-start flex-col">
         <label>Zvali:</label>
@@ -193,52 +209,36 @@
       </flexboxLayout>
       <flexboxLayout class="flex-col justify-start">
         <label>Bela:</label>
-        <stackLayout orientation="horizontal" class="checkbox-item" id="bela-mi" on:tap={changeBela}>
-          <button id="bbela-mi" class={'checkbox ' + (bela === 'mi' ? '-primary' : '-outline-btn')} on:tap={changeBela} />
-          <label>MI</label>
+        {#each ['mi', 'vi'] as team}
+        <stackLayout orientation="horizontal" class="checkbox-item" id={`bela-${team}`} on:tap={changeBela}>
+          <button id={`bbela-${team}`} class={'checkbox ' + (bela === team ? '-primary' : '-outline-btn')} on:tap={changeBela} />
+          <label>{team.toUpperCase()}</label>
         </stackLayout>
-        <stackLayout orientation="horizontal" class="checkbox-item" id="bela-vi" on:tap={changeBela}>
-          <button id="bbela-vi" class={'checkbox ' + (bela === 'vi' ? '-primary' : '-outline-btn')} on:tap={changeBela} />
-          <label>VI</label>
-        </stackLayout>
+        {/each}
       </flexboxLayout>
     </flexboxLayout>
     <gridLayout row="1" columns="*,*">
-      <!-- MI -->
-      <gridLayout class="left-col" col="0" rows="30,50,50">
-        <label row="0">MI</label>
+      {#each constants.config_pointsGrid as team}
+      <gridLayout class={team.class} col={team.col} rows="30,50,50">
+        <label row="0">{team.id.toUpperCase()}</label>
         <textField
           row="1"
           hint="Bodovi"
-          id="mi"
+          id={team.id}
           editable="true"
-          class={roundMIError ? 'error' : ''}
-          bind:text={roundMI}
+          class={(team.id === 'vi' && roundVIError || team.id === 'mi' && roundMIError) ? 'error' : ''}
+          keyboardType="number"
+          bind:text={team.id === 'mi' ? roundMI : roundVI}
           on:blur={changePoints} />
-        <textField
+          <textField
           row="2"
           hint="Zvanja"
           editable="true"
-          class={roundMIZvanjaError ? 'error' : ''}
-          bind:text={roundMIZvanja} />
+          keyboardType="number"
+          class={(team.id === 'vi' && roundVIZvanjaError || team.id === 'mi' && roundMIZvanjaError) ? 'error' : ''}
+          bind:text={team.id === 'mi' ? roundMIZvanja : roundVIZvanja} />
       </gridLayout>
-      <gridLayout class="right-col" col="1" rows="30,50,50">
-        <label row="0">VI</label>
-        <textField
-          row="1"
-          hint="Bodovi"
-          id="vi"
-          editable="true"
-          class={roundVIError ? 'error' : ''}
-          bind:text={roundVI}
-          on:blur={changePoints} />
-        <textField
-          row="2"
-          hint="Zvanja"
-          editable="true"
-          class={roundVIZvanjaError ? 'error' : ''}
-          bind:text={roundVIZvanja} />
-      </gridLayout>
+      {/each}
     </gridLayout>
     <gridLayout row="2" columns="*,*">
       <button col="0" text="Odustani" class="-primary" on:tap={cancelEntry} />
@@ -250,4 +250,5 @@
         on:tap={addRound} />
     </gridLayout>
   </gridLayout>
-</page>
+</flexboxLayout>
+{/if}
