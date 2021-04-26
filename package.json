@@ -1,28 +1,26 @@
 {
-  "name": "tns-template-blank-svelte",
-  "displayName": "Blank Svelte",
-  "templateType": "App template",
-  "author": "David Pershouse (https://github.com/halfnelson)",
-  "version": "7.0.0",
+  "name": "tns-svelte-bela-blok",
+  "displayName": "Svelte Bela Blok",
+  "author": "Amalija Ramljak (https://github.com/amalija-ramljak)",
+  "version": "0.9.0",
   "main": "app.js",
-  "description": "Blank template for Nativescript application using Svelte",
+  "description": "Nativescript bela blok application using Svelte",
   "license": "Apache-2.0",
   "repository": "https://github.com/halfnelson/svelte-native-template",
   "dependencies": {
     "@nativescript/theme": "^2.3.4",
-    "@nativescript/webpack": "3.0.0",
-    "@nstudio/nativescript-checkbox": "^2.0.4",
+    "@nativescript/webpack": "^3.0.0",
+    "@nativescript/core": "^7.0.13",
     "svelte-native": "^0.9.5"
   },
   "devDependencies": {
-    "@nativescript/core": "^7.0.13",
+    "typescript": "^4.0.5",
+    "svelte": "^3.24.1",
     "@nativescript/android": "7.0.0",
     "@nativescript/ios": "^8.0.0",
-    "svelte": "~3.24.1",
-    "svelte-loader-hot": "~0.3.1",
+    "svelte-loader-hot": "^0.3.1",
     "svelte-native-preprocessor": "^0.2.0",
-    "svelte-preprocess": "^4.6.5",
-    "typescript": "^4.0.5"
+    "svelte-preprocess": "^4.6.5"
   },
   "gitHead": "c06800e52ee1a184ea2dffd12a6702aaa43be4e3",
   "readme": "NativeScript Application"

@@ -67,10 +67,10 @@
   resolved "https://registry.yarnpkg.com/@nativescript/theme/-/theme-2.5.0.tgz#4db50a2c9353ad3b859d3345eaed04bcef3c3e31"
   integrity sha512-aFcJPcCEdIE+YvO5AtD70KmlYbm7d98dllaeqvaBwZrVgKzngRUXlBe4sjnfAuo7+1U9hpH2A4zBUPnXcKc+zw==
 
-"@nativescript/webpack@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@nativescript/webpack/-/webpack-3.0.0.tgz#785f21e06f52afb3451239c6def1388e9b301e5d"
-  integrity sha512-/OPTZecx0NMQrTHudBQmw2yUT1DYGn+u3l2gtYiFY3ZQdwowPOHQ8mtDcsRLe83G7nmK3u8L0yaHdA2xBgZeVw==
+"@nativescript/webpack@^3.0.0":
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/@nativescript/webpack/-/webpack-3.0.9.tgz#850716783ab57f7b5bf2470d5e89f26ce83b3931"
+  integrity sha512-PK1aJCgW4niMl6pkDeadqRqx8nZmtfDhMnVmj5FGzY7pt99YcX+m1ixciidUjYXzcsxj9huPOq4moodX2m3JhQ==
   dependencies:
     "@angular-devkit/core" "~10.0.0"
     "@nativescript/hook" "~2.0.0"
@@ -130,11 +130,6 @@
   dependencies:
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
-
-"@nstudio/nativescript-checkbox@^2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@nstudio/nativescript-checkbox/-/nativescript-checkbox-2.0.4.tgz#f894d7a99be4f2e978b6f67578504d2195ec7489"
-  integrity sha512-ypIGAHxDE/2o3CzYohSdypdhiw4GjMcZ3H/qtF4z97HMcMqj+g5bYPDC9cRH97qgAez8jf/z3UX5OzOtnrNxug==
 
 "@types/anymatch@*":
   version "1.3.1"
@@ -3995,7 +3990,7 @@ svelte-hmr@^0.10.3:
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.10.3.tgz#6939a6ae483bb0180e0f3f120554d947e00d2223"
   integrity sha512-s90yAPnfGE6rTbq9Vvq73z1XqLJ2qGw0VjorpwKfDZRIsB0/Ozu+uF5cyC1fS3dCyQcS2sZDMt4zQ/qDjDwa/Q==
 
-svelte-loader-hot@~0.3.1:
+svelte-loader-hot@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/svelte-loader-hot/-/svelte-loader-hot-0.3.1.tgz#0462fe9e1f47feec121ba311811ba5fdc7878b48"
   integrity sha512-0Derrs0jQmdNhEN3vYztamV3aMjJoMvqfIsm+/JcEIF+oULZGDU7Ca/eVdMMEKGNpNwEQwZM+HQPfkoLzfV00Q==
@@ -4024,10 +4019,10 @@ svelte-preprocess@^4.6.5:
     detect-indent "^6.0.0"
     strip-indent "^3.0.0"
 
-svelte@~3.24.1:
-  version "3.24.1"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.24.1.tgz#aca364937dd1df27fe131e2a4c234acb6061db4b"
-  integrity sha512-OX/IBVUJSFo1rnznXdwf9rv6LReJ3qQ0PwRjj76vfUWyTfbHbR9OXqJBnUrpjyis2dwYcbT2Zm1DFjOOF1ZbbQ==
+svelte@^3.24.1:
+  version "3.37.0"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.37.0.tgz#dc7cd24bcc275cdb3f8c684ada89e50489144ccd"
+  integrity sha512-TRF30F4W4+d+Jr2KzUUL1j8Mrpns/WM/WacxYlo5MMb2E5Qy2Pk1Guj6GylxsW9OnKQl1tnF8q3hG/hQ3h6VUA==
 
 tapable@^1.0.0, tapable@^1.1.3, tapable@~1.1.3:
   version "1.1.3"
